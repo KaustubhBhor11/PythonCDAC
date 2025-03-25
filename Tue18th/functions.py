@@ -67,6 +67,7 @@ def convert_identifier_case(s) -> str:
 
 
 # prime numbers for range 10-20 30-40 in 1 list
+# //prime numbers for range 10-20 30-40 in 1 list
 def is_prime_odd():
     prime_list = []
     for i in range(2, 41):

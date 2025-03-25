@@ -7,6 +7,7 @@
 # print(test_file_data)
 #
 from OSModule.path import split
+from os.path import split
 
 
 # function to copy the file

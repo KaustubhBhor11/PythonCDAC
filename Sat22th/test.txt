@@ -1,0 +1,5 @@
+Student id :1 Student Name :Ramo find words in this file.
+this is the second line?
+go home, cannot study,
+hello
+why? how are you !

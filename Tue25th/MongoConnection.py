@@ -4,8 +4,10 @@ import pymongo as mongo
 db = mongo.MongoClient("mongodb://localhost:27017/")
 print(db.list_database_names())
 
-# Select database and list all collections
+# Select database
 mydb = db["employee"]
+
+# List the collections in db
 x = mydb.list_collection_names()
 print(x)
 
@@ -21,6 +23,6 @@ document = {
     "manager": True
 }
 my_table.insert_one(document)
-
+my_table.update_many()
 # list document in collection
 print(list(my_table.find()))

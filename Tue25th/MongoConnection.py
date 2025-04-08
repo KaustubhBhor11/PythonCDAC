@@ -23,6 +23,6 @@ document = {
     "manager": True
 }
 my_table.insert_one(document)
-my_table.update_many()
+# my_table.update_many()
 # list document in collection
 print(list(my_table.find()))

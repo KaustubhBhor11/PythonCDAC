@@ -1,4 +1,6 @@
-import CartIsEmptyException
+from CartIsEmptyException import CartIsEmptyException
+from AmountInvalidException import AmountInvalidException
+
 
 class Checkout:
     def __init__(self):
@@ -7,6 +9,7 @@ class Checkout:
         self.total_price=0
 
     def add_dessert(self,my_dessert):
+
         self.cashRegister.append(my_dessert)
         self.itemcount+=1
         self.total_price+=my_dessert.item_cost()
@@ -14,8 +17,14 @@ class Checkout:
     
     def clear_cash_register(self):
         try:
+            if self.itemcount <=0:
+                raise CartIsEmptyException
+            
+            self.itemcount=0
+            self.total_price=0
             self.cashRegister.clear()
-            raise CartIsEmptyException
+            print("Cash Register has been cleared")
+
         except CartIsEmptyException as e :
             print(e)
 
@@ -27,6 +36,7 @@ class Checkout:
     
     def get_invoice(self):
         for i in self.cashRegister:
-            print(i.name,i.item_cost)
+            print(i)
+        print(f"Total items : {self.get_item_count()} Total Cost :{self.get_item_total()}")
         
 

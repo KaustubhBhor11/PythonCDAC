@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+      }
+
+      /* Navbar styling */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #6c63ff;
+        padding: 10px 20px;
+        color: white;
+      }
+
+      .navbar h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .navbar .profile-icon {
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #6c63ff;
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      /* Cards styling */
+      .cards-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px auto;
+        max-width: 600px;
+      }
+
+      .card {
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        color: #333;
+      }
+
+      .card p {
+        margin: 0;
+        color: #555;
+      }
+
+      /* Table styling */
+      .exercise-table-container {
+        margin: 20px auto;
+        max-width: 800px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .exercise-table-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table th, table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+      }
+
+      table th {
+        background-color: #6c63ff;
+        color: white;
+      }
+
+      table td {
+        color: #555;
+      }
+
+      .add-exercise-btn {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #6c63ff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .add-exercise-btn:hover {
+        background-color: #4b47c8;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <h1>My Fitness Tracker</h1>
+      <div class="profile-icon" onclick="window.location.href='/user_profile'">P</div>
+    </div>
+
+    <!-- Recommended Exercises Section -->
+    <div class="cards-container">
+      <div class="card">
+        <h2>Push-Ups</h2>
+        <p>Strengthen your chest, shoulders, and triceps.</p>
+      </div>
+      <div class="card">
+        <h2>Squats</h2>
+        <p>Build lower body strength and improve flexibility.</p>
+      </div>
+      <div class="card">
+        <h2>Plank</h2>
+        <p>Enhance core stability and posture.</p>
+      </div>
+    </div>
+
+    <!-- Daily Exercise Table -->
+    <div class="exercise-table-container">
+      <h2>Daily Exercise Log</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Repetitions</th>
+            <th>Duration (mins)</th>
+            <th>Calories Burned</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Push-Ups</td>
+            <td>20</td>
+            <td>5</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Squats</td>
+            <td>15</td>
+            <td>7</td>
+            <td>60</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-exercise-btn" onclick="alert('Add Exercise functionality coming soon!')">Add Exercise</button>
+    </div>
+  </body>
+</html>

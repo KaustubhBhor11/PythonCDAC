@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f4f4f9;
+      }
+
+      .container {
+        display: flex;
+        width: 80%;
+        max-width: 1200px;
+        height: 80%;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .form-section {
+        flex: 1;
+        background: #fff;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .form-section h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-weight: bold;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #6c63ff;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #4b47c8;
+      }
+
+      .signup-link {
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      .signup-link a {
+        color: #6c63ff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .signup-link a:hover {
+        color: #4b47c8;
+        text-decoration: underline;
+      }
+
+      .warning {
+        color: red;
+        font-size: 14px;
+        margin-top: -15px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-section">
+        <h1>Welcome Back</h1>
+        <form id="loginForm" onsubmit="return validateLoginForm()">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+            <div id="emailWarning" class="warning"></div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <div id="passwordWarning" class="warning"></div>
+          </div>
+          <button type="submit" class="btn">Sign In</button>
+        </form>
+        <div class="signup-link">
+          <p>Don't have an account? <a href="/signup">Sign up</a></p>
+        </div>
+      </div>
+      <div class="image-section">
+        <img src="https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg" alt="Illustration">
+      </div>
+    </div>
+
+    <script>
+      function validateLoginForm() {
+        // Get form values
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Clear previous warnings
+        document.getElementById('emailWarning').textContent = '';
+        document.getElementById('passwordWarning').textContent = '';
+
+        let isValid = true;
+
+        // Validate email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          document.getElementById('emailWarning').textContent = 'Please enter a valid email address.';
+          isValid = false;
+        }
+
+        // Validate password
+        if (password.length < 6) {
+          document.getElementById('passwordWarning').textContent = 'Password must be at least 6 characters long.';
+          isValid = false;
+        }
+        if (isValid) {
+          window.location.href = '/home'; // Replace '/home' with the actual URL of your home page
+        }
+        return false; // Prevent form submission for demonstration purposes
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+django
+flask
+pymysql
+pymongo
+pyotp

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .profile-photo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .profile-photo img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #6c63ff;
+        margin-bottom: 10px;
+      }
+
+      .profile-photo input[type="file"] {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .profile-details {
+        margin-bottom: 20px;
+      }
+
+      .profile-details label {
+        font-weight: bold;
+        color: #555;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .profile-details input,
+      .profile-details select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #6c63ff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #4b47c8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button class="btn" onclick="window.location.href='/home/'">Back to Home</button>
+      <h1>Profile</h1>
+      <!-- Profile Photo Section -->
+      <div class="profile-photo">
+        <img src="https://via.placeholder.com/120" alt="Profile Photo" id="profileImage">
+        <input type="file" id="uploadPhoto" accept="image/*" onchange="previewPhoto(event)">
+      </div>
+
+      <!-- Profile Details Section -->
+      <form action="/update-profile" method="POST">
+        <div class="profile-details">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" value="JohnDoe" readonly>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" value="johndoe@example.com" readonly>
+
+          <label for="weight">Weight (kg)</label>
+          <input type="number" id="weight" name="weight" value="70" required>
+
+          <label for="height">Height (cm)</label>
+          <input type="number" id="height" name="height" value="170" required>
+
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" value="25" required>
+
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" required>
+            <option value="male" selected>Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label for="activity">Activity Level</label>
+          <select id="activity" name="activity" required>
+            <option value="sedentary">Sedentary (little or no exercise)</option>
+            <option value="light" selected>Lightly active (light exercise/sports 1-3 days/week)</option>
+            <option value="moderate">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+            <option value="active">Active (hard exercise/sports 6-7 days/week)</option>
+            <option value="very_active">Very active (very hard exercise/physical job)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn">Update Profile</button>
+      </form>
+    </div>
+
+    <script>
+      // Preview uploaded profile photo
+      function previewPhoto(event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          const profileImage = document.getElementById('profileImage');
+          profileImage.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    </script>
+  </body>
+</html>

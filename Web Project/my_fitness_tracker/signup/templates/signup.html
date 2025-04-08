@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f4f4f9;
+      }
+
+      .container {
+        display: flex;
+        width: 80%;
+        max-width: 1200px;
+        height: 80%;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .form-section {
+        flex: 1;
+        background: #fff;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .form-section h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-weight: bold;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #6c63ff;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #4b47c8;
+      }
+
+      .login-link {
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      .login-link a {
+        color: #6c63ff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .login-link a:hover {
+        color: #4b47c8;
+        text-decoration: underline;
+      }
+
+      .warning {
+        color: red;
+        font-size: 14px;
+        margin-top: -15px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-section">
+        <h1>Sign Up</h1>
+        <form id="signupForm" action="/signup/signup_view/" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <div id="usernameWarning" class="warning"></div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <div id="emailWarning" class="warning"></div>
+          </div>
+          <div class="form-group">
+            <label for="password">Create Password</label>
+            <input type="password" id="password" name="password" required>
+            <div id="passwordWarning" class="warning"></div>
+          </div>
+          <button type="button" class="btn" onclick="validateForm()">Get OTP</button>
+        </form>
+        <div class="login-link">
+          <p>Already have an account? <a href="/login">Log In</a></p>
+        </div>
+      </div>
+      <div class="image-section">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNOz6pxPH_KXTqLVOArUxltPE26-SMbwjn57OJ24Brgh_yZbzi-zNTvnfrVMrDQDlGBO4&usqp=CAU" alt="Illustration">
+      </div>
+    </div>
+
+    <script>
+      function validateForm() {
+        // Get form values
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Clear previous warnings
+        document.getElementById('usernameWarning').textContent = '';
+        document.getElementById('emailWarning').textContent = '';
+        document.getElementById('passwordWarning').textContent = '';
+
+        let isValid = true;
+
+        // Validate username
+        if (username.length < 3) {
+          document.getElementById('usernameWarning').textContent = 'Username must be at least 3 characters long.';
+          isValid = false;
+        }
+
+        // Validate email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          document.getElementById('emailWarning').textContent = 'Please enter a valid email address.';
+          isValid = false;
+        }
+
+        // Validate password
+        if (password.length < 6) {
+          document.getElementById('passwordWarning').textContent = 'Password must be at least 6 characters long.';
+          isValid = false;
+        }
+
+        // If all validations pass, redirect to OTP validation page
+        if (isValid) {
+          document.getElementById('signupForm').submit();
+        }
+        console.log("Here")
+      }
+    </script>
+  </body>
+</html>
